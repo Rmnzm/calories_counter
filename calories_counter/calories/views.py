@@ -1,8 +1,13 @@
 from django.http import *
+from django.shortcuts import render
+from django.template.response import TemplateResponse
 
 
 def index(request):
-    return HttpResponse("Hello Roman!")
+    """Вызывается функция RENDER, ей передаются объект запроса и путь к файлу шаблона"""
+    """TemplateResponse - задерживает рендеринг шаблона, пока все не подргузится
+        render - отображает шаблон сразу же как только увидел"""
+    return TemplateResponse(request, "calories/home.html")
 
 
 def products(request, productId):

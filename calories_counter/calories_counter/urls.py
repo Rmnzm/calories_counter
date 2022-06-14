@@ -20,7 +20,7 @@ from calories import views
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
-    path('', views.index, name='home'),
+    path('', views.index),
     re_path(r"^contacts", views.contacts, name="contacts"),
     re_path(r"^about", views.about, name="about"),
     path('products/<int:productId>/', views.products),
