@@ -24,5 +24,7 @@ urlpatterns = [
     re_path(r"^contacts", views.contacts, name="contacts"),
     re_path(r"^about", views.about, name="about"),
     path('products/<int:productId>/', views.products),
-    path('users/', views.users)
+    path('users/', views.users),
+    path('temporary/', views.temporary_redirect),
+    path('permanent/', views.permanent_redirect),
 ]
