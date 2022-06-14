@@ -23,3 +23,5 @@ urlpatterns = [
     path("contacts", views.contacts, name="contacts"),
     path("about", views.about, name="about")
 ]
+
+# commit
