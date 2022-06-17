@@ -7,6 +7,16 @@ def index(request):
     """Вызывается функция RENDER, ей передаются объект запроса и путь к файлу шаблона"""
     """TemplateResponse - задерживает рендеринг шаблона, пока все не подргузится
         render - отображает шаблон сразу же как только увидел"""
+    # data = {"header": "THIS HEADER", "message": "THIS MESSAGE"}  # example
+    header = "Personal Data"  # обычная строка
+    langs = ["English", "German", "Spanish"]  # список он же массив
+    user = {"name": "Tom", "age": 23}  # словарь
+    addr = ("Абрикосовая", 23, 45)  # кортеж
+    data = {"header": header, "langs": langs, "user": user, "address": addr}
+    return TemplateResponse(request, "index.html", context=data)
+
+
+def home(request):
     return TemplateResponse(request, "calories/home.html")
 
 
