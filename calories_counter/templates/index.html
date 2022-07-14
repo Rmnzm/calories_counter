@@ -6,5 +6,47 @@
 </head>
 <body>
     <h1>Welcome to DJANGO</h1>
+    <h2>{{ header }}</h2>
+
+    <h3>{% now "Y" %}</h3>
+    <h3>{% now "F j Y" %}</h3>
+    <h3>{% now "N, j, Y" %}</h3>
+    <h3>{% now "N j, Y, P" %}</h3>
+
+    <a href="/main">MAIN PAGE</a> <br>
+    <a href="/calculator">CALCULATOR</a>
+
+    <p>Name: {{ user.name }} Age: {{ user.age }}</p>
+    <p>Address: ул. {{ address.0 }}, д. {{ address.1 }}, кв. {{ address.2 }}</p>
+    <p>Langs: {{ langs.0 }}, {{ langs.1 }}</p>
+    <a href="home/">TEST LINK</a><br>
+    <a href="/about">About</a><br>
+    <a href="/contacts">Contacts</a>
+
+    <div>
+        <!--    IF ELSE EXAMPLE     -->
+        <p>n = {{ n }}</p>
+        {% if n > 0 %}
+            <p>Число положительное</p>
+        {% else %}
+            <p>Число отрицательное или равно нулю</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <!--    CYCLES EXAMPLE      -->
+        <ul>
+            {% for lan in langs %}
+            <li>{{ lan }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+<!--        VARIABLES       -->
+        {% with name="Tom" age=39 %}
+        <p>Name: {{ name }}</p>
+        <p>Age: {{ age }}</p>
+        {% endwith %}
+    </div>
 </body>
 </html>

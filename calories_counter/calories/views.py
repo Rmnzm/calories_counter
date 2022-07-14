@@ -1,3 +1,5 @@
+import random
+
 from django.http import *
 from django.shortcuts import render
 from django.template.response import TemplateResponse
@@ -7,6 +9,17 @@ def index(request):
     """Вызывается функция RENDER, ей передаются объект запроса и путь к файлу шаблона"""
     """TemplateResponse - задерживает рендеринг шаблона, пока все не подргузится
         render - отображает шаблон сразу же как только увидел"""
+    # data = {"header": "THIS HEADER", "message": "THIS MESSAGE"}  # example
+    header = "Personal Data"  # обычная строка
+    languages = ["English", "German", "Spanish"]  # список он же массив
+    user = {"name": "Tom", "age": 23}  # словарь
+    addr = ("Абрикосовая", 23, 45)  # кортеж
+    n = random.randint(-99, 99)
+    data = {"header": header, "langs": languages, "user": user, "address": addr, "n": n}
+    return TemplateResponse(request, "index.html", context=data)
+
+
+def home(request):
     return TemplateResponse(request, "calories/home.html")
 
 
@@ -74,3 +87,4 @@ def status_410(request):
 
 def status_500(request):
     return HttpResponseServerError("<h2>Something is wrong - 500 status code</h2>")
+

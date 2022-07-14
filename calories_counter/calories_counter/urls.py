@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import re_path
 from django.urls import path
 from calories import views
+from django.views.generic import TemplateView
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     path('', views.index),
-    re_path(r"^contacts", views.contacts, name="contacts"),
-    re_path(r"^about", views.about, name="about"),
+    path('home/', views.home),
+    re_path(r"^contacts", TemplateView.as_view(template_name="calories/contacts.html")),
+    re_path(r"^about", TemplateView.as_view(template_name="calories/about.html", extra_context={"header": "About Site"})),
+    re_path(r"^main", TemplateView.as_view(template_name="main.html")),
+    re_path(r"calculator", TemplateView.as_view(template_name="calories/calculator.html")),
     path('products/<int:productId>/', views.products),
     path('users/', views.users),
     path('temporary/', views.temporary_redirect),
