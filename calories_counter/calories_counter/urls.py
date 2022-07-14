@@ -25,6 +25,8 @@ urlpatterns = [
     path('home/', views.home),
     re_path(r"^contacts", TemplateView.as_view(template_name="calories/contacts.html")),
     re_path(r"^about", TemplateView.as_view(template_name="calories/about.html", extra_context={"header": "About Site"})),
+    re_path(r"^main", TemplateView.as_view(template_name="main.html")),
+    re_path(r"calculator", TemplateView.as_view(template_name="calories/calculator.html")),
     path('products/<int:productId>/', views.products),
     path('users/', views.users),
     path('temporary/', views.temporary_redirect),
