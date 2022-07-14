@@ -1,3 +1,5 @@
+import random
+
 from django.http import *
 from django.shortcuts import render
 from django.template.response import TemplateResponse
@@ -9,10 +11,11 @@ def index(request):
         render - отображает шаблон сразу же как только увидел"""
     # data = {"header": "THIS HEADER", "message": "THIS MESSAGE"}  # example
     header = "Personal Data"  # обычная строка
-    langs = ["English", "German", "Spanish"]  # список он же массив
+    languages = ["English", "German", "Spanish"]  # список он же массив
     user = {"name": "Tom", "age": 23}  # словарь
     addr = ("Абрикосовая", 23, 45)  # кортеж
-    data = {"header": header, "langs": langs, "user": user, "address": addr}
+    n = random.randint(-99, 99)
+    data = {"header": header, "langs": languages, "user": user, "address": addr, "n": n}
     return TemplateResponse(request, "index.html", context=data)
 
 
@@ -85,12 +88,3 @@ def status_410(request):
 def status_500(request):
     return HttpResponseServerError("<h2>Something is wrong - 500 status code</h2>")
 
-
-def if_else_example(request):
-    data = {"n": 5}
-    return render(request, "index.html", context=data)
-
-
-def cycle_for_example(request):
-    langs = ["English", "German", "French", "Spanish", "Chinese"]
-    return render(request, "index.html", context={"collection": langs})

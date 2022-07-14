@@ -23,12 +23,15 @@
     <a href="/about">About</a><br>
     <a href="/contacts">Contacts</a>
 
-<!--    IF ELSE EXAMPLE     -->
-    {% if n > 0 %}
-        <p>Число положительное</p>
-    {% else %}
-        <p>Число отрицательное или равно нулю</p>
-    {% endif %}
+    <div>
+        <!--    IF ELSE EXAMPLE     -->
+        <p>n = {{ n }}</p>
+        {% if n > 0 %}
+            <p>Число положительное</p>
+        {% else %}
+            <p>Число отрицательное или равно нулю</p>
+        {% endif %}
+    </div>
 
     <div>
         <!--    CYCLES EXAMPLE      -->
