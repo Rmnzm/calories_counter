@@ -4,6 +4,8 @@ from django.http import *
 from django.shortcuts import render
 from django.template.response import TemplateResponse
 
+from .forms import UserForm
+
 
 def index(request):
     """Вызывается функция RENDER, ей передаются объект запроса и путь к файлу шаблона"""
@@ -17,6 +19,19 @@ def index(request):
     n = random.randint(-99, 99)
     data = {"header": header, "langs": languages, "user": user, "address": addr, "n": n}
     return TemplateResponse(request, "index.html", context=data)
+
+
+def form_page(request):
+    """Вызывается функция рендер. Кторая ренднерит некоторую форму, поля которой заданы в классе UserForm в файлу
+    forms.py
+    Также форма отправляет текст из полей, в которые он был введен, при нажатии на Send. Текст отобразится на странице"""
+    if request.method == "POST":
+        name = request.POST.get("name")
+        age = request.POST.get("age")
+        return HttpResponse("<h2>Hello, {0}</h2><br><h3>You are {1} years!</h3".format(name, age))
+    else:
+        userform = UserForm()
+        return render(request, "form.html", {"form": userform})
 
 
 def home(request):
