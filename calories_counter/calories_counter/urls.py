@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.index),
     path('home/', views.home),
     re_path(r"^contacts", TemplateView.as_view(template_name="calories/contacts.html")),
+    path('form/', views.form_page),
     re_path(r"^about", TemplateView.as_view(template_name="calories/about.html", extra_context={"header": "About Site"})),
     re_path(r"^main", TemplateView.as_view(template_name="main.html")),
     re_path(r"calculator", TemplateView.as_view(template_name="calories/calculator.html")),
