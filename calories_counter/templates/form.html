@@ -8,7 +8,21 @@
     <form method="POST">
         {% csrf_token %}
         <table>
-            {{ form }}
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Send">
+    </form>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_ul }}
+        </table>
+        <input type="submit" value="Send">
+    </form>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_p }}
         </table>
         <input type="submit" value="Send">
     </form>
