@@ -28,7 +28,8 @@ def form_page(request):
     if request.method == "POST":
         name = request.POST.get("name")
         age = request.POST.get("age")
-        return HttpResponse("<h2>Hello, {0}</h2><br><h3>You are {1} years!</h3".format(name, age))
+        comment = request.POST.get("comment")
+        return HttpResponse("<h2>Hello, {0}</h2><br><h3>You are {1} years!</h3><p>{2}</p>".format(name, age, comment))
     else:
         userform = UserForm()
         return render(request, "form.html", {"form": userform})
