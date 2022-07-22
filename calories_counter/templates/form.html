@@ -3,28 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .alert{color:red}
+        .form-group{margin: 10px 0;}
+        .form-group input{width: 250px; height: 25px; border-radius: 3px;}
+    </style>
 </head>
-<body>
-    <form method="POST">
+<body class="container">
+    <form method="POST" novalidate>
         {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
+        <div>
+            {% for field in form %}
+            <div class="form-group">
+                {{field.label_tag}}
+                <div>{{field}}</div>
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    {{error}}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
         <input type="submit" value="Send">
     </form>
-    <form method="POST">
-        {% csrf_token %}
-        <table>
-            {{ form.as_ul }}
-        </table>
-        <input type="submit" value="Send">
-    </form>
-    <form method="POST">
-        {% csrf_token %}
-        <table>
-            {{ form.as_p }}
-        </table>
-        <input type="submit" value="Send">
-    </form>
+<!--    <form method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        <table>-->
+<!--            {{ form.as_ul }}-->
+<!--        </table>-->
+<!--        <input type="submit" value="Send">-->
+<!--    </form>-->
+<!--    <form method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        <table>-->
+<!--            {{ form.as_p }}-->
+<!--        </table>-->
+<!--        <input type="submit" value="Send">-->
+<!--    </form>-->
 </body>
 </html>
